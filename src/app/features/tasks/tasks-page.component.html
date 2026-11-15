@@ -1,0 +1,47 @@
+<section>
+  <h1>Tasks</h1>
+
+  <dl class="stats" aria-label="Task counts">
+    <div><dt>Total</dt><dd>{{ stats().total }}</dd></div>
+    <div><dt>To do</dt><dd>{{ stats().todo }}</dd></div>
+    <div><dt>Doing</dt><dd>{{ stats().doing }}</dd></div>
+    <div><dt>Done</dt><dd>{{ stats().done }}</dd></div>
+  </dl>
+
+  <form class="add" (ngSubmit)="add()">
+    <label class="sr-only" for="new">New task</label>
+    <input id="new" name="new" placeholder="Add a task…" [ngModel]="newTitle()" (ngModelChange)="newTitle.set($event)" />
+    <button type="submit" class="primary">Add</button>
+  </form>
+
+  <div class="filters" role="group" aria-label="Filter by status">
+    @for (f of filters; track f) {
+      <button type="button" [class.active]="filter() === f" [attr.aria-pressed]="filter() === f" (click)="setFilter(f)">
+        {{ f }}
+      </button>
+    }
+  </div>
+
+  @if (loading()) {
+    <p role="status">Loading tasks…</p>
+  }
+  @if (error(); as err) {
+    <p class="error" role="alert">{{ err }}</p>
+  }
+
+  <ul class="tasks">
+    @for (task of tasks(); track task.id) {
+      <li class="task" [attr.data-status]="task.status">
+        <button type="button" class="status" (click)="toggle(task.id, task.status)" [attr.aria-label]="'Advance status of ' + task.title">
+          {{ statusLabel[task.status] }}
+        </button>
+        <span class="title">{{ task.title }}</span>
+        <button type="button" class="remove" (click)="remove(task.id)" [attr.aria-label]="'Remove ' + task.title">×</button>
+      </li>
+    } @empty {
+      @if (!loading()) {
+        <li class="muted">No tasks match this filter.</li>
+      }
+    }
+  </ul>
+</section>
