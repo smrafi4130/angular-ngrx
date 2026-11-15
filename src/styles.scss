@@ -1,0 +1,25 @@
+:root { --bg:#f8fafc; --card:#fff; --fg:#0f172a; --muted:#64748b; --border:#e2e8f0; --accent:#2563eb; --danger:#b91c1c; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: system-ui, -apple-system, sans-serif; background:var(--bg); color:var(--fg); }
+.topbar { padding:14px 24px; background:var(--card); border-bottom:1px solid var(--border); }
+.container { max-width:44rem; margin:0 auto; padding:24px 16px; }
+h1 { font-size:1.4rem; margin:0 0 16px; }
+button { font:inherit; cursor:pointer; border:1px solid var(--border); background:var(--card); color:var(--fg); border-radius:8px; padding:6px 12px; min-height:36px; }
+button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+.stats { display:flex; gap:12px; margin:0 0 16px; padding:0; }
+.stats div { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:8px 14px; flex:1; }
+.stats dt { color:var(--muted); font-size:.75rem; } .stats dd { margin:2px 0 0; font-size:1.3rem; font-weight:600; }
+.add { display:flex; gap:8px; margin-bottom:16px; }
+.add input { flex:1; font:inherit; padding:8px 10px; border:1px solid var(--border); border-radius:8px; min-height:40px; }
+.filters { display:flex; gap:6px; margin-bottom:16px; }
+.filters button { text-transform:capitalize; } .filters button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.tasks { list-style:none; padding:0; display:grid; gap:8px; }
+.task { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--border); border-left-width:4px; border-radius:10px; padding:8px 12px; }
+.task[data-status='todo'] { border-left-color:#94a3b8; }
+.task[data-status='doing'] { border-left-color:#eab308; }
+.task[data-status='done'] { border-left-color:#16a34a; }
+.task[data-status='done'] .title { text-decoration:line-through; color:var(--muted); }
+.task .status { min-width:72px; font-size:.8rem; }
+.task .title { flex:1; } .task .remove { border:0; background:none; font-size:1.2rem; color:var(--muted); min-height:auto; }
+.error { color:var(--danger); } .muted { color:var(--muted); }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
