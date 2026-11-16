@@ -1,5 +1,7 @@
 # Angular NgRx — Tasks
 
+[![CI](https://github.com/smrafi4130/angular-ngrx/actions/workflows/ci.yml/badge.svg)](https://github.com/smrafi4130/angular-ngrx/actions/workflows/ci.yml)
+
 A focused Angular 19 app demonstrating **NgRx** the way larger Angular codebases manage state: a feature slice with an **entity adapter**, **action groups**, a pure **reducer**, **memoized selectors** (including derived state), and **effects** that isolate async work from the reducer.
 
 ![tasks](docs/screenshots/tasks.png)
